@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ellen Kossmann — Generative AI for Work & Research course portfolio." />
+  <title>Ellen Kossmann — Generative AI for Work & Research</title>
+  <style>
+    :root{
+      --ink:#1d2329;
+      --ink-soft:#343b42;
+      --paper:#f4f2ed;
+      --white:#ffffff;
+      --muted:#6f777d;
+      --line:#d7d5d0;
+      --teal:#3f858d;
+      --teal-dark:#2e646b;
+      --gold:#e0b04d;
+      --hero:#20262c;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.65;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(calc(100% - 40px), var(--max));
+      margin-inline:auto;
+    }
+
+    header{
+      position:absolute;
+      inset:0 0 auto 0;
+      z-index:20;
+      background:transparent;
+    }
+
+    header nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      color:white;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      font-size:.84rem;
+    }
+
+    .monogram{
+      width:38px;
+      height:38px;
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:white;
+      font-size:.78rem;
+      letter-spacing:.07em;
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(4px);
+    }
+
+    .navlinks{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      font-size:.78rem;
+      font-weight:750;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .navlinks a{
+      text-decoration:none;
+      color:rgba(255,255,255,.82);
+    }
+
+    .navlinks a:hover{color:#fff}
+
+    .hero-shell{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(16,20,24,.58), rgba(16,20,24,.74)),
+        radial-gradient(circle at 18% 22%, rgba(63,133,141,.45), transparent 31%),
+        radial-gradient(circle at 82% 18%, rgba(224,176,77,.20), transparent 26%),
+        linear-gradient(135deg,#253039 0%,#1c2328 50%,#13181c 100%);
+    }
+
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(118deg,
+          transparent 0 70px,
+          rgba(255,255,255,.022) 70px 72px,
+          transparent 72px 145px),
+        radial-gradient(circle at 70% 75%, rgba(255,255,255,.05) 0 1px, transparent 1.8px);
+      background-size:auto, 34px 34px;
+      opacity:.65;
+      pointer-events:none;
+    }
+
+    .hero{
+      position:relative;
+      z-index:2;
+      min-height:calc(100vh - 84px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:130px 0 150px;
+      color:white;
+    }
+
+    .hero-copy{
+      max-width:940px;
+      margin:auto;
+    }
+
+    .eyebrow{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.73);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3.6rem, 9vw, 8.1rem);
+      line-height:.89;
+      letter-spacing:.055em;
+      font-weight:900;
+      text-transform:uppercase;
+      text-wrap:balance;
+    }
+
+    .hero .lede{
+      max-width:840px;
+      margin:30px auto 0;
+      color:rgba(255,255,255,.88);
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      font-size:clamp(1.05rem, 2vw, 1.35rem);
+      line-height:1.7;
+    }
+
+    .hero-down{
+      width:58px;
+      height:58px;
+      margin:34px auto 0;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      text-decoration:none;
+      color:white;
+      font-size:1.25rem;
+      transition:transform .18s ease, background .18s ease;
+    }
+
+    .hero-down:hover{
+      transform:translateY(3px);
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero-nav{
+      position:relative;
+      z-index:3;
+      width:min(calc(100% - 40px), var(--max));
+      margin:0 auto;
+      min-height:74px;
+      display:flex;
+      align-items:stretch;
+      justify-content:space-between;
+      background:rgba(40,46,51,.88);
+      backdrop-filter:blur(7px);
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    .hero-nav-links{
+      display:flex;
+      align-items:stretch;
+      flex-wrap:wrap;
+    }
+
+    .hero-nav a{
+      display:flex;
+      align-items:center;
+      padding:0 24px;
+      min-height:74px;
+      color:#fff;
+      text-decoration:none;
+      font-size:.72rem;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      border-right:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-nav a:hover,
+    .hero-nav a.active{
+      background:white;
+      color:var(--ink);
+    }
+
+    .hero-nav-social{
+      display:flex;
+      align-items:stretch;
+    }
+
+    .hero-nav-social a{
+      border-right:0;
+      border-left:1px solid rgba(255,255,255,.08);
+      padding-inline:20px;
+    }
+
+    main{
+      background:var(--paper);
+    }
+
+    section{
+      padding:96px 0;
+      border-top:1px solid var(--line);
+    }
+
+    section:first-of-type{border-top:0}
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:.62fr 1.38fr;
+      gap:72px;
+      align-items:start;
+    }
+
+    .kicker{
+      margin:0 0 12px;
+      color:var(--teal-dark);
+      font-size:.72rem;
+      font-weight:850;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(2.25rem, 4.5vw, 4.1rem);
+      line-height:.98;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+    }
+
+    .body-copy{
+      max-width:790px;
+      font-size:1.06rem;
+      color:var(--ink-soft);
+    }
+
+    .body-copy p:first-child{margin-top:0}
+
+    .body-copy p{
+      margin:0 0 1.2em;
+    }
+
+    .facts{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+    }
+
+    .fact{
+      background:rgba(255,255,255,.55);
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:20px;
+    }
+
+    .fact strong{
+      display:block;
+      margin-bottom:5px;
+      color:var(--teal-dark);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    .modules{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+    }
+
+    .module{
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:14px 16px;
+      font-size:.88rem;
+      background:rgba(255,255,255,.45);
+      color:#42515b;
+    }
+
+    .submissions{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+    }
+
+    .card{
+      min-height:220px;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      transition:background .18s ease;
+    }
+
+    .card:hover{
+      background:white;
+    }
+
+    .week{
+      font-size:.7rem;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--teal-dark);
+    }
+
+    .card h3{
+      margin:14px 0 24px;
+      font-size:1.35rem;
+      line-height:1.22;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+    }
+
+    .status{
+      color:#8a9095;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    footer{
+      background:#20262c;
+      color:rgba(255,255,255,.72);
+      font-size:.82rem;
+    }
+
+    .footer-main{
+      padding:34px 0 18px;
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .theme-credit{
+      border-top:1px solid rgba(255,255,255,.11);
+      padding:18px 0 30px;
+      color:rgba(255,255,255,.58);
+      font-size:.76rem;
+    }
+
+    .theme-credit a{
+      color:rgba(255,255,255,.75);
+      text-underline-offset:3px;
+    }
+
+    @media (max-width: 900px){
+      header .navlinks a:not(.linkedin){display:none}
+      .hero{padding-bottom:118px}
+      .hero-nav{width:100%}
+      .hero-nav-links a{padding-inline:16px}
+      .section-grid{grid-template-columns:1fr; gap:30px}
+      .facts{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 700px){
+      .wrap{width:min(calc(100% - 26px), var(--max))}
+      .hero-shell{min-height:92vh}
+      .hero{min-height:calc(92vh - 66px); padding:120px 0 96px}
+      h1{font-size:clamp(3rem, 16vw, 5.2rem); letter-spacing:.03em}
+      .hero .lede{font-size:1.02rem}
+      .hero-nav{
+        flex-direction:column;
+        min-height:auto;
+      }
+      .hero-nav-links{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+      }
+      .hero-nav a{
+        justify-content:center;
+        min-height:58px;
+        padding:0 10px;
+        text-align:center;
+      }
+      .hero-nav-social{display:none}
+      section{padding:72px 0}
+      .modules,.submissions{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <span class="monogram" aria-hidden="true">EK</span>
+        <span>Ellen Kossmann</span>
+      </a>
+      <div class="navlinks">
+        <a class="linkedin" href="https://ch.linkedin.com/in/ellen-kossmann-b08378285" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero-shell" id="top">
+    <div class="wrap hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Course portfolio · 2026</p>
+        <h1>Generative AI<br>for Work &amp; Research</h1>
+        <p class="lede">
+          Portfolio for the 8-week live cohort course
+          Generative AI for Work &amp; Research.
+        </p>
+        <a class="hero-down" href="#about" aria-label="Go to About section">↓</a>
+      </div>
+    </div>
+
+    <div class="hero-nav" aria-label="Section navigation">
+      <div class="hero-nav-links">
+        <a class="active" href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#course">Course</a>
+        <a href="#submissions">Submissions</a>
+      </div>
+      <div class="hero-nav-social">
+        <a href="https://ch.linkedin.com/in/ellen-kossmann-b08378285" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="about">
+      <div class="wrap section-grid">
+        <div>
+          <p class="kicker">01 · About me</p>
+          <h2>About me</h2>
+        </div>
+        <div class="body-copy">
+          <p>
+            I am an MD-PhD student at the University of Zurich, Center of Experimental
+            Rheumatology. I completed my medical studies at the University of Zurich and
+            hold a Federal Diploma as a physician.
+          </p>
+          <p>
+            My master's thesis was conducted in the coronary research group at
+            Luzerner Kantonsspital and was published in
+            <em>Cardiovascular Revascularization and Medicine</em>.
+          </p>
+          <p>
+            I worked as a peer tutor at the University of Zurich from 2020 to 2024.
+            I am a member of the Swiss Study Foundation. From 2018 to 2022, I was part
+            of the Swiss Olympic Elite Cadre and the Swiss National Team in synchronized
+            ice skating.
+          </p>
+
+          <div class="facts">
+            <div class="fact">
+              <strong>Current role</strong>
+              MD-PhD Student, University of Zurich
+            </div>
+            <div class="fact">
+              <strong>Research</strong>
+              Experimental rheumatology
+            </div>
+            <div class="fact">
+              <strong>Profile</strong>
+              <a href="https://ch.linkedin.com/in/ellen-kossmann-b08378285" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="course">
+      <div class="wrap section-grid">
+        <div>
+          <p class="kicker">02 · About the course</p>
+          <h2>About the course</h2>
+        </div>
+        <div class="body-copy">
+          <p>
+            <strong>Generative AI for Work &amp; Research</strong> is an 8-week live cohort
+            course by The GRAPH Courses. The course includes live weekly workshops,
+            hands-on practice, personalized feedback and dedicated office hours.
+          </p>
+          <p>
+            The modules cover documents, presentations and websites; automated data
+            analysis; GenAI for research and text analysis; custom GPTs and chatbots;
+            AI tools for workflow automation; GenAI for communication and outreach;
+            and a capstone project and showcase.
+          </p>
+
+          <div class="modules" aria-label="Course modules">
+            <span class="module">Websites, documents &amp; presentations</span>
+            <span class="module">AI-automated data analysis</span>
+            <span class="module">Text processing &amp; research</span>
+            <span class="module">Custom GPTs &amp; chatbots</span>
+            <span class="module">Task automation</span>
+            <span class="module">Communication &amp; outreach</span>
+            <span class="module">Capstone project &amp; showcase</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="submissions">
+      <div class="wrap">
+        <div class="section-grid">
+          <div>
+            <p class="kicker">03 · Weekly submissions</p>
+            <h2>Weekly submissions</h2>
+          </div>
+          <div class="body-copy">
+            <p>
+              Links will be added as each weekly submission is completed.
+            </p>
+          </div>
+        </div>
+
+        <div class="submissions">
+          <article class="card">
+            <div>
+              <div class="week">Week 01</div>
+              <h3>Websites, documents &amp; presentations</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 02</div>
+              <h3>AI-automated data analysis</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 03</div>
+              <h3>GenAI for text processing &amp; research</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 04</div>
+              <h3>Custom GPTs &amp; chatbots</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 05</div>
+              <h3>AI for task automation</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 06</div>
+              <h3>GenAI for communication &amp; outreach</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 07</div>
+              <h3>Capstone project &amp; showcase</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="week">Week 08</div>
+              <h3>Final portfolio submission</h3>
+            </div>
+            <div class="status">Submission link coming soon</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-main">
+        <span>© 2026 Ellen Kossmann</span>
+        <span>Generative AI for Work &amp; Research · Course portfolio</span>
+      </div>
+      <div class="theme-credit">
+        Design inspiration: <a href="https://themes.gohugo.io/themes/hugo-theme-massively/" target="_blank" rel="noopener noreferrer">Massively</a>,
+        an open-source, mobile-first theme by Curtis Timson, licensed under Creative Commons.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

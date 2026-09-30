@@ -143,6 +143,18 @@
       margin:auto;
     }
 
+    .hero-avatar{
+      width:150px;
+      height:150px;
+      margin:0 auto 28px;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      border:4px solid rgba(255,255,255,.92);
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
+    }
+
     .eyebrow{
       margin:0 0 24px;
       color:rgba(255,255,255,.73);
@@ -416,6 +428,7 @@
       .wrap{width:min(calc(100% - 26px), var(--max))}
       .hero-shell{min-height:92vh}
       .hero{min-height:calc(92vh - 66px); padding:120px 0 96px}
+      .hero-avatar{width:118px;height:118px;margin-bottom:22px}
       h1{font-size:clamp(3rem, 16vw, 5.2rem); letter-spacing:.03em}
       .hero .lede{font-size:1.02rem}
       .hero-nav{
@@ -454,6 +467,11 @@
   <div class="hero-shell" id="top">
     <div class="wrap hero">
       <div class="hero-copy">
+        <img
+          class="hero-avatar"
+          src="https://github.com/ellenkossmann/graph-course/blob/main/pexels-elif-s-986907269-33518574.jpg?raw=true"
+          alt="Portrait of Ellen Kossmann"
+        />
         <p class="eyebrow">Course portfolio · 2026</p>
         <h1>Generative AI<br>for Work &amp; Research</h1>
         <p class="lede">

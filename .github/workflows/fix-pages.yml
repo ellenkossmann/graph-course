@@ -1,0 +1,19 @@
+
+name: Fix stuck Pages deployment
+
+on:
+  workflow_dispatch:
+
+permissions:
+  pages: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel stuck deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST \
+            repos/ellenkossmann/graph-course/pages/deployments/359de3bb4c16ea1ab25ff8e6a9de1cd31ee66ccb/cancel
